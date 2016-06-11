@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dataset: MyString
+  headword: MyString
+  headword_id: MyString
+  part_of_speech: MyString
+  url: MyString
+
+two:
+  dataset: MyString
+  headword: MyString
+  headword_id: MyString
+  part_of_speech: MyString
+  url: MyString
