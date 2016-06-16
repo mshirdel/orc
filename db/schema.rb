@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20160529193321) do
 
   create_table "audios", force: :cascade do |t|
     t.string   "lang"
-    t.string   "type"
+    t.string   "p_type"
     t.string   "url"
     t.integer  "pronounciation_id"
     t.datetime "created_at",        null: false
