@@ -2,7 +2,7 @@ namespace :dbapi do
   
   task geth: :environment do
   	puts 'get headword please wait...'
-  	head_word = "cheap"
+  	head_word = "into"
 
 		url = "api.pearson.com"
 		url_parameter = "/v2/dictionaries/ldoce5/entries?headword=#{head_word}&apikey=02PpCoWHvo4KUszy4lx2jUAChqCwHIgO"
@@ -11,37 +11,35 @@ namespace :dbapi do
 		obj = JSON.parse(response.body)
 
 		for result in obj["results"]
-			# headword = Headword.create(
-			# 	dataset: result["datasets"].inspect,
-			# 	headword: result["headword"],
-			# 	headword_id: result["id"],
-			# 	part_of_speech: result["part_of_speech"],
-			# 	url: result["url"]
-			# )
-			# puts headword.id;
+			headword = Headword.create(
+				dataset: result["datasets"].inspect,
+				headword: result["headword"],
+				headword_id: result["id"],
+				part_of_speech: result["part_of_speech"],
+				url: result["url"]
+			)
 			unless result["pronunciations"].nil?
 				result["pronunciations"].each do |p|
-					# pronunciation = Pronounciation.create(:ipa => p["ipa"] , :headword_id => 1)
+					pronunciation = Pronounciation.create(:ipa => p["ipa"] , :headword_id => headword.id)
 					p["audio"].each do |a|
-						# audio = Audio.create(:lang => a["lang"], :p_type => a["type"], :url => a["url"], :pronounciation_id => 1)
+						audio = Audio.create(:lang => a["lang"], :p_type => a["type"], :url => a["url"], :pronounciation_id => pronunciation.id)
 					end
 				end
 			end
-			unless result["senses"].nil?				
+			unless result["senses"].nil?
 				result["senses"].each do |sense|
-					sense = Sense.create(:headword_id => 1, :definition => sense["definition"], :opposite => sense["opposite"])
-					unless sense["example"].nil?						
+					sense_obj = Sense.create(:headword_id => headword.id, :definition => sense["definition"], :opposite => sense["opposite"])					
+					unless sense["examples"].nil?
 						sense["examples"].each do |example|
-							example = Example.create(:sense_id => sense.id, :text => example["text"], :audio_type => example["audio_type"], :audio_url => ["audio_url"])
+							puts example
+							example_audio = example["audio"]
+							# example = Example.create(:sense_id => sense_obj.id, :text => example["text"], :audio_type => example_audio["type"], :audio_url => example_audio["url"])
+							example = Example.create(:sense_id => sense_obj.id, :text => example["text"])
+							
 						end
 					end
-					# puts "******************************"
 				end
 			end
-			# senses = result["senses"]
-			# for sense in senses
-			# 	puts "> #{sense["definition"]}"
-			# end
 		end
   end
 

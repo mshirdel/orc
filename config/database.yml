@@ -4,7 +4,7 @@ defaults: &defaults
   encoding: unicode
   pool: 20
   username: postgres
-  password: bitnami
+  password: pg123
 
 development:
   <<: *defaults
