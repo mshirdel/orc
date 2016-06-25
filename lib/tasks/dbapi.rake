@@ -2,13 +2,20 @@ namespace :dbapi do
   
   task geth: :environment do
   	puts 'get headword please wait...'
-  	head_word = "into"
+  	head_word = "outgoing"
 
 		url = "api.pearson.com"
 		url_parameter = "/v2/dictionaries/ldoce5/entries?headword=#{head_word}&apikey=02PpCoWHvo4KUszy4lx2jUAChqCwHIgO"
 
 		response = Net::HTTP.get_response(url,url_parameter)
 		obj = JSON.parse(response.body)
+
+		unless obj.nil?
+			p = Pearson.create(
+				word: head_word,
+				response: obj
+			)
+		end
 
 		for result in obj["results"]
 			headword = Headword.create(
