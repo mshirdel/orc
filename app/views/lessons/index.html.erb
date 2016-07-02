@@ -1,0 +1,18 @@
+<h1>Listing lessons</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+
+  <% @lessons.each do |lesson| %>
+    <tr>
+      <td><%= lesson.title %></td>
+      <td><%= lesson.text %></td>
+      <td><%= link_to 'Show', lesson_path(lesson) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New lesson', new_lesson_path %>

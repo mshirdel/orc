@@ -1,11 +1,23 @@
 class LessonsController < ApplicationController
+	def index 
+		@lessons = Lesson.all
+	end
+
+	def show
+		@lesson = Lesson.find(params[:id])
+	end
+
 	def new
+		@lesson = Lesson.new
 	end
 
 	def create
 		@lesson = Lesson.new(lesson_param)
-		@lesson.save
-		redirect_to @article
+		if @lesson.save
+			redirect_to @lesson
+		else
+			render 'new'
+		end
 	end
 
 	private 
