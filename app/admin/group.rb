@@ -1,4 +1,4 @@
-ActiveAdmin.register Lesson do
+ActiveAdmin.register Group do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -13,6 +13,6 @@ ActiveAdmin.register Lesson do
 #   permitted
 # end
 
-permit_params :title, :text
+permit_params :name
 
 end
