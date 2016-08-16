@@ -13,6 +13,6 @@ ActiveAdmin.register Lesson do
 #   permitted
 # end
 
-permit_params :title, :text
+permit_params :title, :text, :group_id
 
 end
