@@ -1,11 +1,19 @@
+<p id="notice"><%= notice %></p>
+
 <p>
   <strong>Title:</strong>
   <%= @lesson.title %>
 </p>
 
 <p>
-  <strong>Text:</strong>
-  <%= @lesson.text %>
+  <strong>Body:</strong>
+  <%= @lesson.body %>
 </p>
 
-<%= link_to 'back', lessons_path %>
+<p>
+  <strong>Group:</strong>
+  <%= @lesson.group %>
+</p>
+
+<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
+<%= link_to 'Back', lessons_path %>

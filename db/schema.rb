@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701143805) do
+ActiveRecord::Schema.define(version: 20160827193053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,12 @@ ActiveRecord::Schema.define(version: 20160701143805) do
 
   add_index "examples", ["sense_id"], name: "index_examples_on_sense_id", using: :btree
 
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "headwords", force: :cascade do |t|
     t.string   "dataset"
     t.string   "headword"
@@ -50,10 +56,13 @@ ActiveRecord::Schema.define(version: 20160701143805) do
 
   create_table "lessons", force: :cascade do |t|
     t.string   "title"
-    t.text     "text"
+    t.text     "body"
+    t.integer  "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "lessons", ["group_id"], name: "index_lessons_on_group_id", using: :btree
 
   create_table "pearsons", force: :cascade do |t|
     t.string   "word"
@@ -81,4 +90,5 @@ ActiveRecord::Schema.define(version: 20160701143805) do
 
   add_index "senses", ["headword_id"], name: "index_senses_on_headword_id", using: :btree
 
+  add_foreign_key "lessons", "groups"
 end
