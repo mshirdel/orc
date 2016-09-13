@@ -60,6 +60,7 @@ module DictionaryHelper
 				HeadwordJob.create(:head_word => word, :is_done => false)
 			rescue ActiveRecord::RecordNotUnique
 			end			
-		end		
+		end
+		GetHeadwordsJob.perform_later
 	end
 end
