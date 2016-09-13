@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827193053) do
+ActiveRecord::Schema.define(version: 20160911210719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20160827193053) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "headword_jobs", force: :cascade do |t|
+    t.string   "head_word"
+    t.boolean  "is_done"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "headword_jobs", ["head_word"], name: "index_headword_jobs_on_head_word", unique: true, using: :btree
 
   create_table "headwords", force: :cascade do |t|
     t.string   "dataset"

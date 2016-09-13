@@ -1,4 +1,7 @@
 class LessonsController < ApplicationController
+  
+  include DictionaryHelper
+
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
 
   # GET /lessons
@@ -10,6 +13,8 @@ class LessonsController < ApplicationController
   # GET /lessons/1
   # GET /lessons/1.json
   def show
+    # @local_data = get_unique_words @lesson.body
+    # @local_data.each { |w| get_dic w}
   end
 
   # GET /lessons/new
@@ -30,6 +35,7 @@ class LessonsController < ApplicationController
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
         format.json { render :show, status: :created, location: @lesson }
+        enque_headwords @lesson.body
       else
         format.html { render :new }
         format.json { render json: @lesson.errors, status: :unprocessable_entity }
