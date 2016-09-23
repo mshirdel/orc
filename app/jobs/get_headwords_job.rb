@@ -4,9 +4,10 @@ class GetHeadwordsJob < ActiveJob::Base
 
   def perform(*args)
     HeadwordJob.where(:is_done => false).each do |hw|
-    	get_dic hw.head_word
-    	hw.is_done= true
-    	hw.save
+    	if(get_dic(hw.head_word) == 1)
+    		hw.is_done= true
+    		hw.save
+    	end
     end
   end
 end
