@@ -34,12 +34,12 @@ module DictionaryHelper
 						end
 					end
 				end
-				1
+				true
 			else
-				-1
+				false
 			end
 		rescue
-				-1
+		  false
 		end		
 	end
 
@@ -52,10 +52,13 @@ module DictionaryHelper
 	def enque_headwords(body)
 		get_unique_words(body).each do |word| 
 			begin
-				HeadwordJob.create(:head_word => word, :is_done => false)
+				h = HeadwordJob.create(:head_word => word, :is_done => false)
+				if(get_dic(h.head_word))
+					h.is_done= true
+					h.save
+				end
 			rescue ActiveRecord::RecordNotUnique
 			end			
 		end
-		GetHeadwordsJob.set(wait: 1.minute).perform_later
 	end
 end

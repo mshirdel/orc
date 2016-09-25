@@ -1,3 +1,5 @@
+require 'resque/server'
+
 Rails.application.routes.draw do
   resources :lessons
   resources :groups
@@ -11,6 +13,8 @@ Rails.application.routes.draw do
   get 'main/contact'
   
   root 'main#index'
+  
+  mount Resque::Server.new, at: "/resque"
   
 
   # Example of regular route:
