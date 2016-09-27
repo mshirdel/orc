@@ -11,7 +11,7 @@ namespace :dbapi do
 		obj = JSON.parse(response.body)
 
 		unless obj.nil?
-			p = Pearson.create(
+			pearson = Pearson.create(
 				word: head_word,
 				response: obj
 			)

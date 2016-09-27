@@ -35,7 +35,7 @@ class LessonsController < ApplicationController
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
         format.json { render :show, status: :created, location: @lesson }
-        enque_headwords @lesson.body
+        Resque.enqueue(GetHeadwordsJob,@lesson.body)
       else
         format.html { render :new }
         format.json { render json: @lesson.errors, status: :unprocessable_entity }
