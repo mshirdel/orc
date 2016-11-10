@@ -1,3 +1,28 @@
+# == Route Map
+#
+#       Prefix Verb   URI Pattern                 Controller#Action
+#      lessons GET    /lessons(.:format)          lessons#index
+#              POST   /lessons(.:format)          lessons#create
+#   new_lesson GET    /lessons/new(.:format)      lessons#new
+#  edit_lesson GET    /lessons/:id/edit(.:format) lessons#edit
+#       lesson GET    /lessons/:id(.:format)      lessons#show
+#              PATCH  /lessons/:id(.:format)      lessons#update
+#              PUT    /lessons/:id(.:format)      lessons#update
+#              DELETE /lessons/:id(.:format)      lessons#destroy
+#       groups GET    /groups(.:format)           groups#index
+#              POST   /groups(.:format)           groups#create
+#    new_group GET    /groups/new(.:format)       groups#new
+#   edit_group GET    /groups/:id/edit(.:format)  groups#edit
+#        group GET    /groups/:id(.:format)       groups#show
+#              PATCH  /groups/:id(.:format)       groups#update
+#              PUT    /groups/:id(.:format)       groups#update
+#              DELETE /groups/:id(.:format)       groups#destroy
+#   main_index GET    /main/index(.:format)       main#index
+# main_contact GET    /main/contact(.:format)     main#contact
+#         root GET    /                           main#index
+#                     /resque                     #<Resque::Server app_file="/home/meysam/.rvm/gems/ruby-2.3.0/gems/resque-1.22.0/lib/resque/server.rb">
+#
+
 require 'resque/server'
 
 Rails.application.routes.draw do
