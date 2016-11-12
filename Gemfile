@@ -26,3 +26,13 @@ group :development do
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 end
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap-rtl'
+  gem 'rails-assets-jquery-knob'
+  gem 'rails-assets-bootstrap-daterangepicker'
+  gem 'rails-assets-jquery-sparkline'
+  gem 'rails-assets-jquery-icheck'
+  gem 'rails-assets-admin-lte'
+end
+
+gem 'admin_lte-rails'

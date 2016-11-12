@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   get 'main/index'
   get 'main/contact'
+  get 'dashboard/index'
   
   root 'main#index'
   
