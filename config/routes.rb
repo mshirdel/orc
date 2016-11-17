@@ -26,6 +26,12 @@
 require 'resque/server'
 
 Rails.application.routes.draw do
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      get 'cms/groups'
+    end
+  end
+
   resources :lessons
   resources :groups
   resources :headwords
