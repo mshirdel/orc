@@ -20,3 +20,4 @@ config/database.yml
 .idea/
 
 *.pdf
+.rake_tasks~

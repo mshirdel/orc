@@ -4,4 +4,8 @@ class MainController < ApplicationController
 
 	def contact
 	end
+
+	def search
+		@headwords = Headword.where(:headword => params[:q])
+	end
 end

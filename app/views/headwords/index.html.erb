@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Headwords</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @headwords.each do |headword| %>
+      <tr>
+        <td><%= headword.headword %></td>
+        <td><%= headword.part_of_speech %></td>
+        <td><%= headword.url %></td>
+        <td><%= link_to 'Show', headword %></td>
+        <td><%= link_to 'Edit', edit_headword_path(headword) %></td>
+        <td><%= link_to 'Destroy', headword, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Headword', new_headword_path %>

@@ -1,19 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @lesson.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @lesson.body %>
-</p>
-
-<p>
-  <strong>Group:</strong>
-  <%= @lesson.group.name %>
-</p>
+<div class="row spacer">
+  <div class="col-md-12"> 
+    <p id="notice" class="bg-success"><%= notice %></p>
+  </div>
+</div>
+<div class="row spacer">
+  <div class="col-md-12">
+    <%= @lesson.group.name %> > <%= @lesson.title %>
+  </div>
+</div>
+<div class="row spacer">
+  <div class="col-md-12">
+    <%= @lesson.body %>
+  </div>
+</div>
 
 <hr/>
 <div>

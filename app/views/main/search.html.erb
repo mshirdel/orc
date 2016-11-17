@@ -1,0 +1,11 @@
+<% unless @headwords.nil? %>
+  found <%= @headwords.count%> headword related to <b><%= params[:q] %></b> </br>
+  <% @headwords.each do |headword|%>
+    <li><%= headword.headword %> - <%= headword.part_of_speech %></li>
+    <% headword.senses.each do |sense| %>
+      <%= sense.definition %>
+    <% end %>
+  <% end %>
+<% else %>
+  not found 
+<% end %>

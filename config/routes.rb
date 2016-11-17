@@ -28,6 +28,7 @@ require 'resque/server'
 Rails.application.routes.draw do
   resources :lessons
   resources :groups
+  resources :headwords
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -36,7 +37,7 @@ Rails.application.routes.draw do
 
   get 'main/index'
   get 'main/contact'
-  
+  post 'main/search'
   root 'main#index'
   
   mount Resque::Server.new, at: "/resque"
