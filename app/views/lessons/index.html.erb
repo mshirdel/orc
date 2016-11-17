@@ -1,31 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Lessons</h1>
+<div class="row spacer">
+  <div class="col-md-2"><b>Title</b></div>
+  <div class="col-md-7"><b>Body</b></div>
+  <div class="col-md-1"><b>Group</b></div>
+  <div class="col-md-2"><b>Actions</b></div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Group</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @lessons.each do |lesson| %>
-      <tr>
-        <td><%= lesson.title %></td>
-        <td><%= lesson.body %></td>
-        <td><%= lesson.group.name %></td>
-        <td><%= link_to 'Show', lesson %></td>
-        <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
-        <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @lessons.each do |lesson| %>
+  <div class="row spacer">
+    <div class="col-md-2"><%= lesson.title %></div>
+    <div class="col-md-7"><%= lesson.body %></div>
+    <div class="col-md-1"><%= lesson.group.name %></div>
+    <div class="col-md-2">
+      <%= link_to 'Show', lesson, class: 'btn btn-default btn-xs' %>
+      <%= link_to 'Edit', edit_lesson_path(lesson), class: 'btn btn-default btn-xs' %>
+      <%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-warning btn-xs' %>
+    </div>
+  </div>
+<% end %>
+  
 
 <br>
 
-<%= link_to 'New Lesson', new_lesson_path %>
+<%= link_to 'New Lesson', new_lesson_path, class: 'btn btn-primary' %>
