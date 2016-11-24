@@ -11,7 +11,7 @@
 <% @lessons.each do |lesson| %>
   <div class="row spacer">
     <div class="col-md-2"><%= lesson.title %></div>
-    <div class="col-md-7"><%= lesson.body %></div>
+    <div class="col-md-7"><%= lesson.body.split[0...50].join(' ') + '...' %></div>
     <div class="col-md-1"><%= lesson.group.name %></div>
     <div class="col-md-2">
       <%= link_to 'Show', lesson, class: 'btn btn-default btn-xs' %>

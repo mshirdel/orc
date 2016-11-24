@@ -5,9 +5,13 @@ module Api
 
       def groups
         @groups = Group.all
-        respond_to do |format|
-          format.json {render json: @groups }
-        end
+        render json: @groups
+      end
+
+      def lessons
+        group = Group.find(params[:id])
+        render json: group.lessons unless group.lessons.nil?
+        p "$> #{params.inspect}"
       end
 
     end
